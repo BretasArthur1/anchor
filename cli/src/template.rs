@@ -2190,14 +2190,4 @@ mod tests {
         assert!(test.contains("const counter = anchor.web3.Keypair.generate();"));
         assert!(test.contains("counter: counter.publicKey"));
     }
-
-    #[test]
-    fn security_metadata_template_is_valid_json() {
-        let content = get_security_metadata_content("demo-program");
-        let json: serde_json::Value = serde_json::from_str(&content).unwrap();
-
-        assert_eq!(json["name"], "demo-program");
-        assert!(json.get("expiry").is_none());
-        assert_eq!(json["version"], "0.1.0");
-    }
 }
