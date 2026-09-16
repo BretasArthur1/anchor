@@ -1841,6 +1841,7 @@ fn init(
 
     if !no_security_metadata {
         let content = get_security_metadata_content(&project_name);
+        let content = serde_json::to_vec_pretty(&content)?;
         fs::write("security.json", content)?;
     }
 
