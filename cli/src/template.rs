@@ -6,6 +6,7 @@ use {
     anyhow::Result,
     clap::{Parser, ValueEnum},
     heck::{ToLowerCamelCase, ToPascalCase, ToSnakeCase},
+    serde_json::{json, Value},
     solana_keypair::{read_keypair_file, write_keypair_file, Keypair},
     solana_pubkey::Pubkey,
     solana_signer::Signer,
@@ -2137,8 +2138,8 @@ fn test_initialize() {{
     )]
 }
 
-pub fn get_security_metadata_content(project_name: &str) -> serde_json::Value {
-    serde_json::json!({
+pub fn get_security_metadata_content(project_name: &str) -> Value {
+    json!({
         "name": project_name,
         "logo": "https://solana.com/pt/src/img/branding/solanaLogoMark.png",
         "description": "A fresh Anchor program!",
